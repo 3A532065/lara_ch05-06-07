@@ -27,6 +27,7 @@ Route::group(['prefix'=>'student'],function(){
 
     ])->where (['subject'=>'(chinese|english|math)']);
     Route::get('/','HomeController@index');
+    Route::get('cool','Cool\TestController@index');
 
 });
 
