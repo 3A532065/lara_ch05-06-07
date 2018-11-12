@@ -33,3 +33,4 @@ Route::group(['prefix'=>'student'],function(){
 
 
 
+Route::get('/board', 'BoardController@getIndex');
