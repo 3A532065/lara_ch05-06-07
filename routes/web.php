@@ -11,7 +11,9 @@
 |
 */
 
-
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::pattern('student_no','s[0-9]{10}');
 Route::group(['prefix'=>'student'],function(){
 
@@ -24,13 +26,14 @@ Route::group(['prefix'=>'student'],function(){
     Route::get('{student_no}/score/{subject?}',[
         'as'=>'student.score',
         'uses'=>'StudentController@getStudentScore'
-
     ])->where (['subject'=>'(chinese|english|math)']);
-    Route::get('/','HomeController@index');
-    Route::get('cool','Cool\TestController@index');
-
 });
+    Route::get('/','HomeController@index');
+
+    Route::group(['namespace'=>'Cool'],function(){
+        Route::get('cool','TestController@index');
+    });
 
 
 
-Route::get('/board', 'BoardController@getIndex');
+    Route::get('/board', 'BoardController@getIndex');
